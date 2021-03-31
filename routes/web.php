@@ -14,5 +14,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return '<h1>hello user!</h1>
+            <div>
+                <a href="/public/">Главная</a>
+                <a href="/public/info">Информация</a>
+                <a href="/public/news">Новости</a>
+            </div>';
+});
+
+Route::get('/info', function () {
+    return '<h1>project information</h1>
+            <div>
+                <a href="/public/">Главная</a>
+                <a href="/public/info">Информация</a>
+                <a href="/public/news">Новости</a>
+            </div>
+            <p>lesson 1</p>';
+});
+
+Route::get('/news', function () {
+    return '<h1>News</h1>
+            <div>
+                <a href="/public/">Главная</a>
+                <a href="/public/info">Информация</a>
+                <a href="/public/news">Новости</a>
+            </div>
+            <p>page for news</p>';
 });
