@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\newsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/home', [homeController::class, 'home'])
+    ->name('home');
+Route::get('/news', [newsController::class, 'news'])
+    ->name('news');
+
+Route::group([
+    'prefix' => '/news',
+    'as' => 'news::',
+], function () {
+    Route::get('/sport', [newsController::class, 'newsSport'])
+        ->name('sport');
+    Route::get('/society', [newsController::class, 'newsSociety'])
+        ->name('society');
 });
