@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [homeController::class, 'home'])
+    ->name('home');
+// Route::get('/news', [newsController::class, 'news'])
+//     ->name('news');
+
+Route::group([
+    'prefix' => '/news',
+    'as' => 'news::',
+], function () {
+    Route::get('/', [newsController::class, 'news'])
+    ->name('news');
+    Route::get('/news/{category}', [newsController::class, 'card'])
+    ->name('card');
+});
