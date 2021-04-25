@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\newsController;
+use App\Http\Controllers\formController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::group([
     Route::get('/news/{category}', [newsController::class, 'card'])
     ->name('card');
 });
+
+Route::match(['get', 'post'], '/feedback', [formController::class, 'form'])
+    ->name('form');
